@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nails Studio | Uñas Esculpidas Mar del Plata</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+    body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+  .glass-effect { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
+  .gradient-text { background: linear-gradient(135deg, #d946ef 0%, #ec4899 50%, #f472b6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .btn-primary { background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%); transition: all 0.3s ease; }
+  .btn-primary:hover { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); transform: translateY(-2px); }
+  .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
+  .modal.active { display: flex; align-items: center; justify-content: center; }
+  .disponible { background-color: #fce7f3; color: #be185d; border: 1px solid #f9a8d4; }
+  .ocupado { background-color: #f5f5f4; color: #a8a29e; cursor: not-allowed; }
+  .admin-ocupado { background-color: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; }
+  .admin-disponible { background-color: #dcfce7; color: #16a34a; border: 1px solid #86efac; }
+</style>
+</head>
+<body class="bg-[#fdfbf9] text-stone-800">
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5492236698579?text=Hola!%20Quiero%20reservar%20un%20turno%20para%20u%C3%B1as%20%E2%9C%A8" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Promo Banner -->
+    <div class="bg-gradient-to-r from-amber-400 via-rose-400 to-pink-500 text-white py-3 text-center text-sm font-medium">
+        <i class="fa-solid fa-fire mr-2"></i>
+        <span class="font-bold">PROMO BABYBOOMER $20.000 ARS</span> hasta largo 1 o 2
+    </div>
+
+    <!-- Header -->
+    <header class="sticky w-full top-0 z-40 glass-effect border-b border-rose-100">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-hand-sparkles text-rose-400 text-2xl"></i>
+                    <span class="text-2xl font-semibold gradient-text">Nails Studio</span>
+                </div>
+                <a href="#turnos" class="hidden sm:block btn-primary text-white px-5 py-2.5 rounded-full text-sm font-medium">Reservar turno</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="pt-8 pb-16 bg-gradient-to-b from-rose-50 to-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl sm:text-5xl font-bold mb-6">Tus uñas <span class="gradient-text">perfectas</span> en cada detalle</h1>
+            <p class="text-lg text-stone-600 mb-8">Especialista en esculpidas, kapping y esmaltado semipermanente.</p>
+            <a href="#turnos" class="btn-primary text-white px-8 py-3.5 rounded-full font-medium inline-block">Ver turnos disponibles</a>
+        </div>
+    </section>
+
+    <!-- Turnos -->
+    <section id="turnos" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Turnos disponibles</h2>
+                <p class="text-stone-600">Elegí el día y horario que mejor te quede. Seña del 50% para confirmar.</p>
+            </div>
+            <div id="calendar-container" class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg border border-rose-100 p-6"></div>
+        </div>
+    </section>
+
+    <!-- Footer con Admin -->
+    <footer class="bg-stone-900 text-stone-300 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">&copy; 2025 Nails Studio. Mar del Plata, Argentina.</p>
+            <button id="admin-btn" class="text-stone-500 hover:text-rose-400 text-sm">
+                <i class="fa-solid fa-lock mr-1"></i> Panel Admin
+            </button>
+        </div>
+    </footer>
+
+    <!-- Modal Login -->
+    <div id="login-modal" class="modal">
+        <div class="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 shadow-2xl">
+            <h3 class="text-2xl font-bold mb-6 text-center">Acceso Admin</h3>
+            <form id="login-form" class="space-y-4">
+                <input type="text" id="username" placeholder="Usuario" class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-rose-300" required>
+                <input type="password" id="password" placeholder="Contraseña" class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-rose-300" required>
+                <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-medium">Ingresar</button>
+                <p id="login-error" class="text-red-500 text-sm text-center hidden">Usuario o contraseña incorrectos</p>
+            </form>
+            <button id="close-login" class="w-full mt-4 text-stone-500 hover:text-stone-700 text-sm">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Panel Admin -->
+    <div id="admin-panel" class="modal">
+        <div class="bg-white rounded-2xl p-6 max-w-4xl w-full mx-4 shadow-2xl max-h- overflow-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">Gestión de Turnos</h3>
+                <button id="close-admin" class="text-stone-500 hover:text-stone-700"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div id="admin-calendar"></div>
+        </div>
+    </div>
+
+<script>
+const BOOKINGS_KEY = 'nails_studio_bookings';
+const AUTH_KEY = 'nails_studio_auth';
+let isAdminMode = false;
+
+function getAuth() {
+    const stored = localStorage.getItem(AUTH_KEY);
+    return stored? JSON.parse(stored) : { username: 'admin', password: 'francia3138' };
+}
+
+function getBookings() {
+    const stored = localStorage.getItem(BOOKINGS_KEY);
+    return stored? JSON.parse(stored) : {};
+}
+
+function saveBookings(bookings) {
+    localStorage.setItem(BOOKINGS_KEY, JSON.stringify(bookings));
+}
+
+// Login
+const adminBtn = document.getElementById('admin-btn');
+const loginModal = document.getElementById('login-modal');
+const loginForm = document.getElementById('login-form');
+const loginError = document.getElementById('login-error');
+const closeLogin = document.getElementById('close-login');
+const adminPanel = document.getElementById('admin-panel');
+const closeAdmin = document.getElementById('close-admin');
+
+adminBtn.addEventListener('click', () => {
+    loginModal.classList.add('active');
+    loginError.classList.add('hidden');
+});
+
+closeLogin.addEventListener('click', () => {
+    loginModal.classList.remove('active');
+});
+
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const auth = getAuth();
+
+    if (username === auth.username && password === auth.password) {
+        loginModal.classList.remove('active');
+        adminPanel.classList.add('active');
+        loginForm.reset();
+        isAdminMode = true;
+        renderAdminCalendar();
+    } else {
+        loginError.classList.remove('hidden');
+    }
+});
+
+closeAdmin.addEventListener('click', () => {
+    adminPanel.classList.remove('active');
+    isAdminMode = false;
+    renderCalendar();
+});
+
+// Calendario simple
+function renderCalendar() {
+    const container = document.getElementById('calendar-container');
+    container.innerHTML = '<p class="text-center text-stone-600">Seleccioná una fecha en WhatsApp para reservar tu turno ✨</p><div class="text-center mt-6"><a href="https://wa.me/5492236698579?text=Hola!%20Quiero%20ver%20turnos%20disponibles%20%E2%9C%A8" target="_blank" class="btn-primary text-white px-8 py-3.5 rounded-full font-medium inline-block">Consultar por WhatsApp</a></div>';
+}
+
+function renderAdminCalendar() {
+    const container = document.getElementById('admin-calendar');
+    container.innerHTML = '<p class="text-stone-600">Panel de administración activo. Los turnos se gestionan por WhatsApp.</p><button onclick="localStorage.clear();alert(\'Cache limpiado\')" class="mt-4 bg-rose-500 text-white px-4 py-2 rounded">Limpiar datos guardados</button>';
+}
+
+// Init
+renderCalendar();
+</script>
+</body>
+</html>
