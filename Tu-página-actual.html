@@ -1170,7 +1170,12 @@
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     modal.classList.remove('active');
-                }
+                } 
+            adminBtn.addEventListener('click', () => {
+    adminPanel.classList.add('active');
+    isAdminMode = true;
+    renderAdminCalendar();
+});
             });
         });
 
