@@ -1,181 +1,244 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nails Studio | Uñas Esculpidas Mar del Plata</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-    body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
-  .glass-effect { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
-  .gradient-text { background: linear-gradient(135deg, #d946ef 0%, #ec4899 50%, #f472b6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .btn-primary { background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%); transition: all 0.3s ease; }
-  .btn-primary:hover { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); transform: translateY(-2px); }
-  .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
-  .modal.active { display: flex; align-items: center; justify-content: center; }
-  .disponible { background-color: #fce7f3; color: #be185d; border: 1px solid #f9a8d4; }
-  .ocupado { background-color: #f5f5f4; color: #a8a29e; cursor: not-allowed; }
-  .admin-ocupado { background-color: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; }
-  .admin-disponible { background-color: #dcfce7; color: #16a34a; border: 1px solid #86efac; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <title>Camila Modica - Nails & Estética</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+       .font-playfair { font-family: 'Playfair Display', serif; }
+       .gradient-bg { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fbcfe8 100%); }
+       .glass-effect { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.8); }
+       .service-card { transition: all 0.3s ease; }
+       .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(236, 72, 153, 0.15); }
+       .admin-btn { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+    </style>
 </head>
-<body class="bg-[#fdfbf9] text-stone-800">
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/5492236698579?text=Hola!%20Quiero%20reservar%20un%20turno%20para%20u%C3%B1as%20%E2%9C%A8" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg">
-        <i class="fab fa-whatsapp text-3xl"></i>
-    </a>
-
-    <!-- Promo Banner -->
-    <div class="bg-gradient-to-r from-amber-400 via-rose-400 to-pink-500 text-white py-3 text-center text-sm font-medium">
-        <i class="fa-solid fa-fire mr-2"></i>
-        <span class="font-bold">PROMO BABYBOOMER $20.000 ARS</span> hasta largo 1 o 2
-    </div>
-
+<body class="gradient-bg min-h-screen">
     <!-- Header -->
-    <header class="sticky w-full top-0 z-40 glass-effect border-b border-rose-100">
-        <nav class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-hand-sparkles text-rose-400 text-2xl"></i>
-                    <span class="text-2xl font-semibold gradient-text">Nails Studio</span>
+    <header class="glass-effect sticky top-0 z-50 border-b border-pink-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-pink-400 to-pink-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">CM</span>
+                    </div>
+                    <div>
+                        <h1 class="font-playfair text-2xl font-bold text-gray-800">Camila Modica</h1>
+                        <p class="text-sm text-pink-600">Nails & Estética</p>
+                    </div>
                 </div>
-                <a href="#turnos" class="hidden sm:block btn-primary text-white px-5 py-2.5 rounded-full text-sm font-medium">Reservar turno</a>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Hero -->
-    <section class="pt-8 pb-16 bg-gradient-to-b from-rose-50 to-white">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl sm:text-5xl font-bold mb-6">Tus uñas <span class="gradient-text">perfectas</span> en cada detalle</h1>
-            <p class="text-lg text-stone-600 mb-8">Especialista en esculpidas, kapping y esmaltado semipermanente.</p>
-            <a href="#turnos" class="btn-primary text-white px-8 py-3.5 rounded-full font-medium inline-block">Ver turnos disponibles</a>
-        </div>
-    </section>
-
-    <!-- Turnos -->
-    <section id="turnos" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4">Turnos disponibles</h2>
-                <p class="text-stone-600">Elegí el día y horario que mejor te quede. Seña del 50% para confirmar.</p>
-            </div>
-            <div id="calendar-container" class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg border border-rose-100 p-6"></div>
-        </div>
-    </section>
-
-    <!-- Footer con Admin -->
-    <footer class="bg-stone-900 text-stone-300 py-12">
-        <div class="container mx-auto px-4 text-center">
-            <p class="mb-4">&copy; 2025 Nails Studio. Mar del Plata, Argentina.</p>
-            <button id="admin-btn" class="text-stone-500 hover:text-rose-400 text-sm">
-                <i class="fa-solid fa-lock mr-1"></i> Panel Admin
+    <!-- Hero Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-playfair text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+                Belleza que <span class="text-pink-600">inspira</span>
+            </h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Servicios profesionales de uñas y estética. Agenda tu cita y viví la experiencia Camila Modica.
+            </p>
+            <button onclick="document.getElementById('reservas').scrollIntoView({behavior: 'smooth'})"
+                    class="bg-gradient-to-r from-pink-500 to-pink-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-pink-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                Reservar Turno
             </button>
         </div>
-    </footer>
+    </section>
 
-    <!-- Modal Login -->
-    <div id="login-modal" class="modal">
-        <div class="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 shadow-2xl">
-            <h3 class="text-2xl font-bold mb-6 text-center">Acceso Admin</h3>
-            <form id="login-form" class="space-y-4">
-                <input type="text" id="username" placeholder="Usuario" class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-rose-300" required>
-                <input type="password" id="password" placeholder="Contraseña" class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-rose-300" required>
-                <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-medium">Ingresar</button>
-                <p id="login-error" class="text-red-500 text-sm text-center hidden">Usuario o contraseña incorrectos</p>
-            </form>
-            <button id="close-login" class="w-full mt-4 text-stone-500 hover:text-stone-700 text-sm">Cancelar</button>
-        </div>
-    </div>
-
-    <!-- Panel Admin -->
-    <div id="admin-panel" class="modal">
-        <div class="bg-white rounded-2xl p-6 max-w-4xl w-full mx-4 shadow-2xl max-h- overflow-auto">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold">Gestión de Turnos</h3>
-                <button id="close-admin" class="text-stone-500 hover:text-stone-700"><i class="fa-solid fa-xmark text-xl"></i></button>
+    <!-- Servicios -->
+    <section id="servicios" class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="font-playfair text-4xl font-bold text-center text-gray-800 mb-12">Nuestros Servicios</h3>
+            <div id="servicios-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Los servicios se cargan desde localStorage -->
             </div>
-            <div id="admin-calendar"></div>
+        </div>
+    </section>
+
+    <!-- Reservas -->
+    <section id="reservas" class="py-16 px-4 bg-white/50">
+        <div class="max-w-2xl mx-auto">
+            <h3 class="font-playfair text-4xl font-bold text-center text-gray-800 mb-8">Reservá tu turno</h3>
+            <div class="glass-effect rounded-2xl p-8 shadow-xl">
+                <form id="reserva-form">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <input type="text" id="nombre" placeholder="Nombre completo" required
+                               class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                        <input type="tel" id="telefono" placeholder="WhatsApp" required
+                               class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                    </div>
+                    <select id="servicio" required class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500 focus:border-transparent mb-6">
+                        <option value="">Seleccioná un servicio</option>
+                    </select>
+                    <input type="date" id="fecha" required
+                           class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500 focus:border-transparent mb-6">
+                    <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-pink-600 text-white py-4 rounded-lg text-lg font-semibold hover:from-pink-600 hover:to-pink-700 transition-all duration-300">
+                        Confirmar Reserva
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Admin -->
+    <button id="admin-btn" class="admin-btn bg-gray-800 text-white p-4 rounded-full shadow-lg hover:bg-gray-700 transition-all" title="Panel Admin">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        </svg>
+    </button>
+
+    <!-- Panel Admin Modal -->
+    <div id="admin-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div id="login-screen" class="p-8">
+                <h3 class="font-playfair text-3xl font-bold text-gray-800 mb-6">Panel Admin</h3>
+                <input type="text" id="admin-user" placeholder="Usuario"
+                       class="w-full px-4 py-3 rounded-lg border border-gray-300 mb-4">
+                <input type="password" id="admin-pass" placeholder="Contraseña"
+                       class="w-full px-4 py-3 rounded-lg border border-gray-300 mb-6">
+                <button onclick="login()" class="w-full bg-pink-600 text-white py-3 rounded-lg font-semibold hover:bg-pink-700">
+                    Ingresar
+                </button>
+            </div>
+            <div id="admin-panel" class="hidden p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-playfair text-3xl font-bold text-gray-800">Gestionar Servicios</h3>
+                    <button onclick="logout()" class="text-gray-600 hover:text-gray-800">Cerrar sesión</button>
+                </div>
+                <div id="servicios-admin" class="space-y-4 mb-6"></div>
+                <button onclick="agregarServicio()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+                    + Agregar Servicio
+                </button>
+            </div>
         </div>
     </div>
 
-<script>
-const BOOKINGS_KEY = 'nails_studio_bookings';
-const AUTH_KEY = 'nails_studio_auth';
-let isAdminMode = false;
+    <script>
+        // Datos por defecto
+        const serviciosDefault = [
+            {id: 1, nombre: "Manicura Clásica", precio: 3500, duracion: "45 min"},
+            {id: 2, nombre: "Esmaltado Semipermanente", precio: 4500, duracion: "1 hora"},
+            {id: 3, nombre: "Uñas Esculpidas", precio: 8000, duracion: "2 horas"},
+            {id: 4, nombre: "Pedicura Spa", precio: 5000, duracion: "1 hora"},
+            {id: 5, nombre: "Nail Art", precio: 6000, duracion: "1.5 horas"}
+        ];
 
-function getAuth() {
-    const stored = localStorage.getItem(AUTH_KEY);
-    return stored? JSON.parse(stored) : { username: 'admin', password: 'francia3138' };
-}
+        // Cargar servicios
+        function cargarServicios() {
+            const servicios = JSON.parse(localStorage.getItem('servicios')) || serviciosDefault;
+            const lista = document.getElementById('servicios-list');
+            const select = document.getElementById('servicio');
 
-function getBookings() {
-    const stored = localStorage.getItem(BOOKINGS_KEY);
-    return stored? JSON.parse(stored) : {};
-}
+            lista.innerHTML = '';
+            select.innerHTML = '<option value="">Seleccioná un servicio</option>';
 
-function saveBookings(bookings) {
-    localStorage.setItem(BOOKINGS_KEY, JSON.stringify(bookings));
-}
+            servicios.forEach(s => {
+                lista.innerHTML += `
+                    <div class="service-card glass-effect rounded-xl p-6">
+                        <h4 class="font-playfair text-xl font-semibold text-gray-800 mb-2">${s.nombre}</h4>
+                        <p class="text-pink-600 font-bold text-lg mb-2">$${s.precio}</p>
+                        <p class="text-gray-600">${s.duracion}</p>
+                    </div>
+                `;
+                select.innerHTML += `<option value="${s.id}">${s.nombre} - $${s.precio}</option>`;
+            });
+        }
 
-// Login
-const adminBtn = document.getElementById('admin-btn');
-const loginModal = document.getElementById('login-modal');
-const loginForm = document.getElementById('login-form');
-const loginError = document.getElementById('login-error');
-const closeLogin = document.getElementById('close-login');
-const adminPanel = document.getElementById('admin-panel');
-const closeAdmin = document.getElementById('close-admin');
+        // Admin
+        document.getElementById('admin-btn').onclick = () => {
+            document.getElementById('admin-modal').classList.remove('hidden');
+            document.getElementById('admin-modal').classList.add('flex');
+        };
 
-adminBtn.addEventListener('click', () => {
-    loginModal.classList.add('active');
-    loginError.classList.add('hidden');
-});
+        function login() {
+            const user = document.getElementById('admin-user').value;
+            const pass = document.getElementById('admin-pass').value;
+            if (user === 'admin' && pass === 'francia3138') {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('admin-panel').classList.remove('hidden');
+                cargarAdminServicios();
+            } else {
+                alert('Usuario o contraseña incorrectos');
+            }
+        }
 
-closeLogin.addEventListener('click', () => {
-    loginModal.classList.remove('active');
-});
+        function logout() {
+            document.getElementById('admin-modal').classList.add('hidden');
+            document.getElementById('admin-modal').classList.remove('flex');
+            document.getElementById('login-screen').classList.remove('hidden');
+            document.getElementById('admin-panel').classList.add('hidden');
+            document.getElementById('admin-user').value = '';
+            document.getElementById('admin-pass').value = '';
+        }
 
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const auth = getAuth();
+        function cargarAdminServicios() {
+            const servicios = JSON.parse(localStorage.getItem('servicios')) || serviciosDefault;
+            const div = document.getElementById('servicios-admin');
+            div.innerHTML = '';
+            servicios.forEach((s, i) => {
+                div.innerHTML += `
+                    <div class="flex items-center gap-4 p-4 border rounded-lg">
+                        <input value="${s.nombre}" onchange="editarServicio(${i}, 'nombre', this.value)" class="flex-1 px-3 py-2 border rounded">
+                        <input type="number" value="${s.precio}" onchange="editarServicio(${i}, 'precio', this.value)" class="w-24 px-3 py-2 border rounded">
+                        <input value="${s.duracion}" onchange="editarServicio(${i}, 'duracion', this.value)" class="w-24 px-3 py-2 border rounded">
+                        <button onclick="borrarServicio(${i})" class="text-red-600 hover:text-red-800">Borrar</button>
+                    </div>
+                `;
+            });
+        }
 
-    if (username === auth.username && password === auth.password) {
-        loginModal.classList.remove('active');
-        adminPanel.classList.add('active');
-        loginForm.reset();
-        isAdminMode = true;
-        renderAdminCalendar();
-    } else {
-        loginError.classList.remove('hidden');
-    }
-});
+        function editarServicio(i, campo, valor) {
+            const servicios = JSON.parse(localStorage.getItem('servicios')) || serviciosDefault;
+            servicios[i][campo] = campo === 'precio'? parseInt(valor) : valor;
+            localStorage.setItem('servicios', JSON.stringify(servicios));
+            cargarServicios();
+        }
 
-closeAdmin.addEventListener('click', () => {
-    adminPanel.classList.remove('active');
-    isAdminMode = false;
-    renderCalendar();
-});
+        function borrarServicio(i) {
+            const servicios = JSON.parse(localStorage.getItem('servicios')) || serviciosDefault;
+            servicios.splice(i, 1);
+            localStorage.setItem('servicios', JSON.stringify(servicios));
+            cargarAdminServicios();
+            cargarServicios();
+        }
 
-// Calendario simple
-function renderCalendar() {
-    const container = document.getElementById('calendar-container');
-    container.innerHTML = '<p class="text-center text-stone-600">Seleccioná una fecha en WhatsApp para reservar tu turno ✨</p><div class="text-center mt-6"><a href="https://wa.me/5492236698579?text=Hola!%20Quiero%20ver%20turnos%20disponibles%20%E2%9C%A8" target="_blank" class="btn-primary text-white px-8 py-3.5 rounded-full font-medium inline-block">Consultar por WhatsApp</a></div>';
-}
+        function agregarServicio() {
+            const servicios = JSON.parse(localStorage.getItem('servicios')) || serviciosDefault;
+            servicios.push({id: Date.now(), nombre: "Nuevo Servicio", precio: 0, duracion: "1 hora"});
+            localStorage.setItem('servicios', JSON.stringify(servicios));
+            cargarAdminServicios();
+            cargarServicios();
+        }
 
-function renderAdminCalendar() {
-    const container = document.getElementById('admin-calendar');
-    container.innerHTML = '<p class="text-stone-600">Panel de administración activo. Los turnos se gestionan por WhatsApp.</p><button onclick="localStorage.clear();alert(\'Cache limpiado\')" class="mt-4 bg-rose-500 text-white px-4 py-2 rounded">Limpiar datos guardados</button>';
-}
+        // Reservas
+        document.getElementById('reserva-form').onsubmit = (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const servicioId = document.getElementById('servicio').value;
+            const fecha = document.getElementById('fecha').value;
 
-// Init
-renderCalendar();
-</script>
+            const servicios = JSON.parse(localStorage.getItem('servicios')) || serviciosDefault;
+            const servicio = servicios.find(s => s.id == servicioId);
+
+            const mensaje = `Hola! Soy ${nombre}. Quiero reservar: ${servicio.nombre} para el ${fecha}. Mi WhatsApp: ${telefono}`;
+            window.open(`https://wa.me/5491112345678?text=${encodeURIComponent(mensaje)}`, '_blank');
+        };
+
+        // Init
+        cargarServicios();
+
+        // Cerrar modal con ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') logout();
+        });
+    </script>
 </body>
 </html>
-<!-- deploy -->
