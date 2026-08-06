@@ -895,9 +895,12 @@
             localStorage.setItem(STORAGE_KEY, JSON.stringify(turnos));
         }
 
-        function getAuth() {
-            const stored = localStorage.getItem(AUTH_KEY);
-            return stored ? JSON.parse(stored) : { username: 'admin', password: 'francia3138' };
+       function getAuth() {
+
+    localStorage.removeItem(AUTH_KEY);
+    const stored = localStorage.getItem(AUTH_KEY);
+    return stored ? JSON.parse(stored) : { username: 'admin', password: 'camila2025' };
+        }
         }
 
         function saveAuth(auth) {
