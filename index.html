@@ -9,16 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Inter', sans-serif; }
-       .font-playfair { font-family: 'Playfair Display', serif; }
-       .gradient-bg { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fbcfe8 100%); }
-       .glass-effect { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.8); }
-       .service-card { transition: all 0.3s ease; }
-       .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(236, 72, 153, 0.15); }
-       .admin-btn { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+      .font-playfair { font-family: 'Playfair Display', serif; }
+      .gradient-bg { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fbcfe8 100%); }
+      .glass-effect { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.8); }
+      .service-card { transition: all 0.3s ease; }
+      .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(236, 72, 153, 0.15); }
+      .admin-btn { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+      .gallery-img { transition: all 0.3s ease; }
+      .gallery-img:hover { transform: scale(1.05); }
     </style>
 </head>
 <body class="gradient-bg min-h-screen">
-    <!-- Header -->
     <header class="glass-effect sticky top-0 z-50 border-b border-pink-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
@@ -31,18 +32,23 @@
                         <p class="text-sm text-pink-600">Nails & Estética</p>
                     </div>
                 </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#servicios" class="text-gray-700 hover:text-pink-600 transition-colors">Servicios</a>
+                    <a href="#galeria" class="text-gray-700 hover:text-pink-600 transition-colors">Galería</a>
+                    <a href="#reservas" class="text-gray-700 hover:text-pink-600 transition-colors">Reservas</a>
+                    <a href="#contacto" class="text-gray-700 hover:text-pink-600 transition-colors">Contacto</a>
+                </nav>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="py-20 px-4">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="font-playfair text-5xl md:text-6xl font-bold text-gray-800 mb-6">
                 Belleza que <span class="text-pink-600">inspira</span>
             </h2>
             <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Servicios profesionales de uñas y estética. Agenda tu cita y viví la experiencia Camila Modica.
+                Servicios profesionales de uñas y estética en Londres. Agenda tu cita y viví la experiencia Camila Modica.
             </p>
             <button onclick="document.getElementById('reservas').scrollIntoView({behavior: 'smooth'})"
                     class="bg-gradient-to-r from-pink-500 to-pink-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-pink-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
@@ -51,34 +57,43 @@
         </div>
     </section>
 
-    <!-- Servicios -->
     <section id="servicios" class="py-16 px-4">
         <div class="max-w-6xl mx-auto">
             <h3 class="font-playfair text-4xl font-bold text-center text-gray-800 mb-12">Nuestros Servicios</h3>
-            <div id="servicios-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Los servicios se cargan desde localStorage -->
+            <div id="servicios-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <section id="galeria" class="py-16 px-4 bg-white/50">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="font-playfair text-4xl font-bold text-center text-gray-800 mb-12">Galería de Trabajos</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <img src="Imagen de WhatsApp 2026-08-04 a las 16.08.43 (1).jpeg" alt="Uñas" class="gallery-img w-full h-64 object-cover rounded-xl shadow-lg">
+                <img src="Imagen de WhatsApp 2026-08-04 a las 16.08.43.jpeg" alt="Uñas" class="gallery-img w-full h-64 object-cover rounded-xl shadow-lg">
+                <img src="Imagen de WhatsApp 2026-08-04 a las 16.08.44 (1).jpeg" alt="Uñas" class="gallery-img w-full h-64 object-cover rounded-xl shadow-lg">
+                <img src="Imagen de WhatsApp 2026-08-04 a las 16.08.44 (2).jpeg" alt="Uñas" class="gallery-img w-full h-64 object-cover rounded-xl shadow-lg">
+                <img src="Imagen de WhatsApp 2026-08-04 a las 16.08.44.jpeg" alt="Uñas" class="gallery-img w-full h-64 object-cover rounded-xl shadow-lg">
+                <img src="Imagen de WhatsApp 2026-08-04 a las 16.08.45 (1).jpeg" alt="Uñas" class="gallery-img w-full h-64 object-cover rounded-xl shadow-lg">
+                <img src="Imagen de WhatsApp 2026-08-04 a las 16.08.45 (2).jpeg" alt="Uñas" class="gallery-img w-full h-64 object-cover rounded-xl shadow-lg">
+                <img src="Imagen de WhatsApp 2026-08-04 a las 16.08.45 (3).jpeg" alt="Uñas" class="gallery-img w-full h-64 object-cover rounded-xl shadow-lg">
             </div>
         </div>
     </section>
 
-    <!-- Reservas -->
-    <section id="reservas" class="py-16 px-4 bg-white/50">
+    <section id="reservas" class="py-16 px-4">
         <div class="max-w-2xl mx-auto">
             <h3 class="font-playfair text-4xl font-bold text-center text-gray-800 mb-8">Reservá tu turno</h3>
             <div class="glass-effect rounded-2xl p-8 shadow-xl">
                 <form id="reserva-form">
                     <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <input type="text" id="nombre" placeholder="Nombre completo" required
-                               class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
-                        <input type="tel" id="telefono" placeholder="WhatsApp" required
-                               class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                        <input type="text" id="nombre" placeholder="Nombre completo" required class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500">
+                        <input type="tel" id="telefono" placeholder="WhatsApp" required class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500">
                     </div>
-                    <select id="servicio" required class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500 focus:border-transparent mb-6">
+                    <select id="servicio" required class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500 mb-6">
                         <option value="">Seleccioná un servicio</option>
                     </select>
-                    <input type="date" id="fecha" required
-                           class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500 focus:border-transparent mb-6">
-                    <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-pink-600 text-white py-4 rounded-lg text-lg font-semibold hover:from-pink-600 hover:to-pink-700 transition-all duration-300">
+                    <input type="date" id="fecha" required class="w-full px-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-500 mb-6">
+                    <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-pink-600 text-white py-4 rounded-lg text-lg font-semibold hover:from-pink-600 hover:to-pink-700">
                         Confirmar Reserva
                     </button>
                 </form>
@@ -86,26 +101,42 @@
         </div>
     </section>
 
-    <!-- Botón Admin -->
+    <section id="contacto" class="py-16 px-4 bg-white/50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="font-playfair text-4xl font-bold text-gray-800 mb-8">Contacto</h3>
+            <div class="glass-effect rounded-2xl p-8 shadow-xl">
+                <p class="text-xl text-gray-700 mb-6">Londres, Reino Unido</p>
+                <div class="flex justify-center gap-6">
+                    <a href="https://wa.me/5491112345678" target="_blank" class="bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition-all">
+                        WhatsApp
+                    </a>
+                    <a href="https://instagram.com/camilamodica" target="_blank" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-semibold hover:from-purple-600 hover:to-pink-600 transition-all">
+                        Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 px-4 text-center text-gray-600">
+        <p>&copy; 2026 Camila Modica - Nails & Estética. Todos los derechos reservados.</p>
+    </footer>
+
     <button id="admin-btn" class="admin-btn bg-gray-800 text-white p-4 rounded-full shadow-lg hover:bg-gray-700 transition-all" title="Panel Admin">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37a1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
         </svg>
     </button>
 
-    <!-- Panel Admin Modal -->
     <div id="admin-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h- overflow-y-auto">
             <div id="login-screen" class="p-8">
                 <h3 class="font-playfair text-3xl font-bold text-gray-800 mb-6">Panel Admin</h3>
-                <input type="text" id="admin-user" placeholder="Usuario"
-                       class="w-full px-4 py-3 rounded-lg border border-gray-300 mb-4">
-                <input type="password" id="admin-pass" placeholder="Contraseña"
-                       class="w-full px-4 py-3 rounded-lg border border-gray-300 mb-6">
-                <button onclick="login()" class="w-full bg-pink-600 text-white py-3 rounded-lg font-semibold hover:bg-pink-700">
-                    Ingresar
-                </button>
+                <input type="text" id="admin-user" placeholder="Usuario" class="w-full px-4 py-3 rounded-lg border border-gray-300 mb-4">
+                <input type="password" id="admin-pass" placeholder="Contraseña" class="w-full px-4 py-3 rounded-lg border border-gray-300 mb-6">
+                <button onclick="login()" class="w-full bg-pink-600 text-white py-3 rounded-lg font-semibold hover:bg-pink-700">Ingresar</button>
+                <button onclick="logout()" class="w-full mt-2 text-gray-600 hover:text-gray-800">Cancelar</button>
             </div>
             <div id="admin-panel" class="hidden p-8">
                 <div class="flex justify-between items-center mb-6">
@@ -113,45 +144,34 @@
                     <button onclick="logout()" class="text-gray-600 hover:text-gray-800">Cerrar sesión</button>
                 </div>
                 <div id="servicios-admin" class="space-y-4 mb-6"></div>
-                <button onclick="agregarServicio()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
-                    + Agregar Servicio
-                </button>
+                <button onclick="agregarServicio()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">+ Agregar Servicio</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Datos por defecto
         const serviciosDefault = [
             {id: 1, nombre: "Manicura Clásica", precio: 3500, duracion: "45 min"},
             {id: 2, nombre: "Esmaltado Semipermanente", precio: 4500, duracion: "1 hora"},
-            {id: 3, nombre: "Uñas Esculpidas", precio: 8000, duracion: "2 horas"},
+            {id: 3, nombre: "Uñas Esculpidas en Gel", precio: 8000, duracion: "2 horas"},
             {id: 4, nombre: "Pedicura Spa", precio: 5000, duracion: "1 hora"},
-            {id: 5, nombre: "Nail Art", precio: 6000, duracion: "1.5 horas"}
+            {id: 5, nombre: "Nail Art Personalizado", precio: 6000, duracion: "1.5 horas"},
+            {id: 6, nombre: "Kapping Gel", precio: 5500, duracion: "1 hora"},
+            {id: 7, nombre: "Service de Uñas", precio: 4000, duracion: "1 hora"}
         ];
 
-        // Cargar servicios
         function cargarServicios() {
             const servicios = JSON.parse(localStorage.getItem('servicios')) || serviciosDefault;
             const lista = document.getElementById('servicios-list');
             const select = document.getElementById('servicio');
-
             lista.innerHTML = '';
             select.innerHTML = '<option value="">Seleccioná un servicio</option>';
-
             servicios.forEach(s => {
-                lista.innerHTML += `
-                    <div class="service-card glass-effect rounded-xl p-6">
-                        <h4 class="font-playfair text-xl font-semibold text-gray-800 mb-2">${s.nombre}</h4>
-                        <p class="text-pink-600 font-bold text-lg mb-2">$${s.precio}</p>
-                        <p class="text-gray-600">${s.duracion}</p>
-                    </div>
-                `;
+                lista.innerHTML += `<div class="service-card glass-effect rounded-xl p-6"><h4 class="font-playfair text-xl font-semibold text-gray-800 mb-2">${s.nombre}</h4><p class="text-pink-600 font-bold text-lg mb-2">$${s.precio}</p><p class="text-gray-600">${s.duracion}</p></div>`;
                 select.innerHTML += `<option value="${s.id}">${s.nombre} - $${s.precio}</option>`;
             });
         }
 
-        // Admin
         document.getElementById('admin-btn').onclick = () => {
             document.getElementById('admin-modal').classList.remove('hidden');
             document.getElementById('admin-modal').classList.add('flex');
@@ -183,14 +203,7 @@
             const div = document.getElementById('servicios-admin');
             div.innerHTML = '';
             servicios.forEach((s, i) => {
-                div.innerHTML += `
-                    <div class="flex items-center gap-4 p-4 border rounded-lg">
-                        <input value="${s.nombre}" onchange="editarServicio(${i}, 'nombre', this.value)" class="flex-1 px-3 py-2 border rounded">
-                        <input type="number" value="${s.precio}" onchange="editarServicio(${i}, 'precio', this.value)" class="w-24 px-3 py-2 border rounded">
-                        <input value="${s.duracion}" onchange="editarServicio(${i}, 'duracion', this.value)" class="w-24 px-3 py-2 border rounded">
-                        <button onclick="borrarServicio(${i})" class="text-red-600 hover:text-red-800">Borrar</button>
-                    </div>
-                `;
+                div.innerHTML += `<div class="flex items-center gap-4 p-4 border rounded-lg"><input value="${s.nombre}" onchange="editarServicio(${i}, 'nombre', this.value)" class="flex-1 px-3 py-2 border rounded"><input type="number" value="${s.precio}" onchange="editarServicio(${i}, 'precio', this.value)" class="w-24 px-3 py-2 border rounded"><input value="${s.duracion}" onchange="editarServicio(${i}, 'duracion', this.value)" class="w-24 px-3 py-2 border rounded"><button onclick="borrarServicio(${i})" class="text-red-600 hover:text-red-800">Borrar</button></div>`;
             });
         }
 
@@ -217,28 +230,20 @@
             cargarServicios();
         }
 
-        // Reservas
         document.getElementById('reserva-form').onsubmit = (e) => {
             e.preventDefault();
             const nombre = document.getElementById('nombre').value;
             const telefono = document.getElementById('telefono').value;
             const servicioId = document.getElementById('servicio').value;
             const fecha = document.getElementById('fecha').value;
-
             const servicios = JSON.parse(localStorage.getItem('servicios')) || serviciosDefault;
             const servicio = servicios.find(s => s.id == servicioId);
-
             const mensaje = `Hola! Soy ${nombre}. Quiero reservar: ${servicio.nombre} para el ${fecha}. Mi WhatsApp: ${telefono}`;
             window.open(`https://wa.me/5491112345678?text=${encodeURIComponent(mensaje)}`, '_blank');
         };
 
-        // Init
         cargarServicios();
-
-        // Cerrar modal con ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') logout();
-        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') logout(); });
     </script>
 </body>
 </html>
